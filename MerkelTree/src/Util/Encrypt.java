@@ -1,19 +1,21 @@
+package Util;
 // Java program to calculate SHA-512 hash value
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.Map;
+
+import DataStructures.Transaction;
 //import org.json.simple.JSONValue;  
 
 public class Encrypt {
 
+	
 
-    public static String encryptThisTransaction(long transcationID,String from, String to, Double amount, long timestamp)
+    public static String encryptThisTransaction(Transaction transaction)
 	{
 		try {
-            String input = createJsonString(transcationID,from, to, amount, timestamp);
+            String input = createJsonString(transaction.getId(),transaction.getFrom(), transaction.getTo(), transaction.getAmount(), transaction.getTimestamp());
             
 			// getInstance() method is called with algorithm SHA-512
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
