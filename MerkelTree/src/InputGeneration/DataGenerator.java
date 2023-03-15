@@ -1,4 +1,4 @@
-
+package InputGeneration;
 
 import java.io.FileWriter;
 import java.io.IOException;
