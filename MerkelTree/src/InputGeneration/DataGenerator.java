@@ -1,4 +1,4 @@
-package InputGeneration;
+
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,22 +39,22 @@ public class DataGenerator {
         try{
             FileWriter writer = new FileWriter("data.csv");
 
-        for (int i = 0; i < RECORD_COUNT; i++) {
-            String transactionId = UUID.randomUUID().toString();
-            String from=getRandomName();
-            String to=getRandomName();
-            double amount=getRandomAmount();
-            Timestamp timestamp=randomTimeStampGenerator();
-            String unixtime=Long.toString(timestamp.getTime() / 1000);
-            String[] data={transactionId,from,to,Double.toString(amount),timestamp.toString(),unixtime};
+            for (int i = 0; i < RECORD_COUNT; i++) {
+                String transactionId = UUID.randomUUID().toString();
+                String from=getRandomName();
+                String to=getRandomName();
+                double amount=getRandomAmount();
+                Timestamp timestamp=randomTimeStampGenerator();
+                String unixtime=Long.toString(timestamp.getTime() / 1000);
+                String[] data={transactionId,from,to,Double.toString(amount),unixtime};
 
-            writer.write(String.join(",",data));
-            writer.write("\n");
-        }
-        writer.flush();
-        writer.close();
-        ExternalMergeSort externalMergeSort=new ExternalMergeSort();
-        externalMergeSort.sort("data.csv","sorted.csv");
+                writer.write(String.join(",",data));
+                writer.write("\n");
+            }
+            writer.flush();
+            writer.close();
+            ExternalMergeSort externalMergeSort=new ExternalMergeSort();
+            externalMergeSort.sort("data.csv","sorted.csv");
 
         }catch (IOException e){
             e.printStackTrace();

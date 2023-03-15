@@ -1,4 +1,4 @@
-package InputGeneration;
+
 
 /**
 
@@ -9,8 +9,8 @@ package InputGeneration;
  */
 
 
-        import java.io.*;
-        import java.util.*;
+import java.io.*;
+import java.util.*;
 
 /**
  * @author ravi
@@ -47,7 +47,7 @@ public class ExternalMergeSort {
         BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
 
         //writing the headers to the CSV File
-        String[] headers = {"ID", "From","To", "Amount", "Timestamp","Unix Timestamp"};
+        String[] headers = {"ID", "From","To", "Amount","Timestamp"};
         writer.write(String.join(",", headers));
         writer.newLine();
 
@@ -95,7 +95,7 @@ public class ExternalMergeSort {
         int i = 0, j = 0, k = left;
         while (i < leftList.size() && j < rightList.size()) {
             // Change the index to the column you want to sort by
-            if (leftList.get(i)[5].compareTo(rightList.get(j)[5]) <= 0) {
+            if (leftList.get(i)[4].compareTo(rightList.get(j)[4]) <= 0) {
                 entries.set(k++, leftList.get(i++));
             } else {
                 entries.set(k++, rightList.get(j++));
