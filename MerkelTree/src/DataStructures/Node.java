@@ -1,18 +1,62 @@
+/**
+ * This represents a block in a blockchain.
+ */
 package DataStructures;
-import java.util.List;
-public class Node {
-    String merkle_root;
-    long timestamp;
-    Node previous;
-    Node next;
-    List<Transaction> transactions;
 
-    public Node(String merkle_root, long timestamp, Node previous, Node next, List<Transaction> transactions) {
-        this.merkle_root = merkle_root;
-        this.timestamp = timestamp;
-        this.previous = previous;
-        this.next = next;
-        this.transactions = transactions;
+public class Node {
+
+    /**
+     * The block of the node.
+     */
+    private final Block merkleBlock;
+
+    /**
+     * The previous node in the blockchain.
+     */
+    private final Node previousNode;
+
+    /**
+     * The next node in the blockchain.
+     */
+    private final Node nextNode;
+
+    /**
+     * Creates a new node with the given parameters.
+     *
+     * @param merkleBlock   the block of the node
+     * @param previousNode  the previous node in the blockchain
+     * @param nextNode      the next node in the blockchain
+     */
+    public Node(Block merkleBlock, Node previousNode, Node nextNode) {
+        this.merkleBlock = merkleBlock;
+        this.previousNode = previousNode;
+        this.nextNode = nextNode;
     }
 
+    /**
+     * Returns the block of the node.
+     *
+     * @return the block of the node
+     */
+    public Block getMerkleBlock() {
+        return merkleBlock;
+    }
+
+    /**
+     * Returns the previous node in the blockchain.
+     *
+     * @return the previous node in the blockchain
+     */
+    public Node getPreviousNode() {
+        return previousNode;
+    }
+
+    /**
+     * Returns the next node in the blockchain.
+     *
+     * @return the next node in the blockchain
+     */
+    public Node getNextNode() {
+        return nextNode;
+    }
 }
