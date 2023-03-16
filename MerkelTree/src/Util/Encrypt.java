@@ -1,22 +1,31 @@
+/**
+
+ A utility class to generate hash values for transactions and Strings.
+ Java program to calculate SHA-512 hash value
+ */
+
 package Util;
-// Java program to calculate SHA-512 hash value
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import DataStructures.Transaction;
-//import org.json.simple.JSONValue;  
+//import org.json.simple.JSONValue;
 
 public class Encrypt {
 
-	
-
-    public static String encryptThisTransaction(Transaction transaction)
+	/**
+	 * Generates a SHA-512 hash for the given transaction.
+	 *
+	 * @param transaction the transaction to generate hash for
+	 * @return the hash value as a string
+	 */
+	public static String encryptThisTransaction(Transaction transaction)
 	{
 		try {
-            String input = createJsonString(transaction.getId(),transaction.getFrom(), transaction.getTo(), transaction.getAmount(), transaction.getTimestamp());
-            
+			String input = createJsonString(transaction.getId(),transaction.getFrom(), transaction.getTo(), transaction.getAmount(), transaction.getTimestamp());
+
 			// getInstance() method is called with algorithm SHA-512
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
 
@@ -40,59 +49,70 @@ public class Encrypt {
 			return hashtext;
 		}
 
-        
+
 		// For specifying wrong message digest algorithms
 		catch (NoSuchAlgorithmException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	private static String createJsonString(long transactionID, String from, String to, Double amount, long timestamp) {
-
-        //donot remove this code
-
-        // Map obj=new HashMap();    
-        // obj.put("from",from);    
-        // obj.put("to", to);    
-        // obj.put("amount",amount);   
-        // String inputString = JSONValue.toJSONString(obj);  
-        // System.out.print(inputString); 
-        // return inputString;
-        
-        //As of now I am creating a JSON String Manually
-        //Later I will change it using JSON Class.
-        String inputStr = "{" 
-        + "\"Transaction ID\": \""+ to +"\","
-        + "\"From\": \""+ from+"\","
-        + "\"To\": \""+ to +"\"," 
-        + "\"Amount\": \""+ amount +"\","                
-        + "\"TimeStamp\": "+timestamp+"}";
-
-        System.out.println(inputStr);
-        return inputStr;
-
-    }
 	/**
-	 * Generate Hash for the given input string
-	 * @param input string
-	 * @return hashString
+	 * Creates a JSON string for the given transaction fields.
+	 *
+	 * @param transactionID the transaction ID
+	 * @param from the sender of the transaction
+	 * @param to the receiver of the transaction
+	 * @param amount the amount involved in the transaction
+	 * @param timestamp the timestamp of the transaction
+	 * @return the JSON string for the transaction
 	 */
-	 public static String generateHash(String input) {
-	        try {
-	            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-	            byte[] hash = digest.digest(input.getBytes());
-	            StringBuffer hexString = new StringBuffer();
+	private static String createJsonString(String transactionID, String from, String to, Double amount, long timestamp) {
 
-	            for (int i = 0; i < hash.length; i++) {
-	                String hex = Integer.toHexString(0xff & hash[i]);
-	                if (hex.length() == 1) hexString.append('0');
-	                hexString.append(hex);
-	            }
 
-	            return hexString.toString();
-	        } catch (NoSuchAlgorithmException e) {
-	            throw new RuntimeException(e);
-	        }
-	    }
+
+		// JSONObject jsonObject = new JSONObject();
+		// jsonObject.put("Transaction ID", transactionID);
+		// jsonObject.put("From", from);
+		// jsonObject.put("To", to);
+		// jsonObject.put("Amount", amount);
+		// jsonObject.put("Timestamp", timestamp);
+		// String jsonString = jsonObject.toString();
+		// return jsonString;
+
+		String inputStr = "{"
+				+ "\"Transaction ID\": \""+ transactionID +"\","
+				+ "\"From\": \""+ from+"\","
+				+ "\"To\": \""+ to +"\","
+				+ "\"Amount\": \""+ amount +"\","
+				+ "\"TimeStamp\": "+timestamp+"}";
+
+		System.out.println(inputStr);
+		return inputStr;
+
+	}
+
+	/**
+	 * Generates a SHA-256 hash for the given input string.
+	 *
+	 * @param input the input string to generate hash for
+	 * @return the hash value as a string
+	 */
+	public static String generateHash(String input) {
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(input.getBytes());
+			StringBuffer hexString = new StringBuffer();
+
+			for (int i = 0; i < hash.length; i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if (hex.length() == 1) hexString.append('0');
+				hexString.append(hex);
+			}
+
+			return hexString.toString();
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }
