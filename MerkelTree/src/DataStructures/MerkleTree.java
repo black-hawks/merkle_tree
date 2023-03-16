@@ -1,11 +1,11 @@
 package DataStructures;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
 import Util.Encrypt;
 
@@ -18,12 +18,17 @@ import Util.Encrypt;
  */
 public class MerkleTree {
     private List<Transaction> transactions;
+    private List<MerkleTreeNode> merkleTree;
+    
+    private final String left="LEFT";
+    private final String right="RIGHT";
    
     
     
 
     public MerkleTree(List<Transaction> transactions) {
         this.transactions = transactions;
+        this.merkleTree = new ArrayList<>();
     }
 
     public MerkleTreeNode getMerkleRoot() {
@@ -43,6 +48,7 @@ public class MerkleTree {
         for (Transaction transaction : transactions) {
             childNodes.add(new MerkleTreeNode(null, null,Encrypt.encryptThisTransaction(transaction) ));
         }
+        merkleTree.addAll(childNodes);
 
         return buildMerkleTree(childNodes);
     }
@@ -75,6 +81,7 @@ public class MerkleTree {
                 parents.add(new MerkleTreeNode(leftChild, rightChild, parentHash));
                 index += 2;
             }
+            merkleTree.addAll(parents);
             children = parents;
             parents = new ArrayList<>();
         }
@@ -118,6 +125,58 @@ public class MerkleTree {
             }
 
         }
+        
+   
+    }
+    
+    /** Find the Merkle Path 
+     * 
+     * @param index leaf node index
+     * @return LinkedHashMap the MerkleTreeNode and its location with respect to its parent
+     */
+    public LinkedHashMap<MerkleTreeNode,String> getMerklePath(int index) {
+    	LinkedHashMap<MerkleTreeNode,String> merklePath = new LinkedHashMap<>();
+        int currentIndex = index;
+        if(currentIndex % 2 == 0) {
+        	merklePath.put(merkleTree.get(currentIndex),left);
+        }else {
+        	merklePath.put(merkleTree.get(currentIndex),right);
+        }
+        for (int i = 1; currentIndex < (merkleTree.size()-1); i *= 2) {
+        	//Enter sibling of the current index
+        	if (currentIndex % 2 == 0) {
+                merklePath.put(merkleTree.get(currentIndex + 1),right);
+            } else {
+                merklePath.put(merkleTree.get(currentIndex - 1),left);
+            }
+        	currentIndex = currentIndex / 2 + merkleTree.size() / 2+1;
+        }
+        return merklePath;
+    }
+    
+    /**
+     * Compare the MeklePath with Current Root hash Values
+     * @param merklePath take the merkle path
+     * @return boolean true if proof is verified else false
+     */
+    public boolean getMerkleProof(LinkedHashMap<MerkleTreeNode,String> merklePath ) {
+        System.out.println("Generating Merkle Proof...");
+        Set<MerkleTreeNode> hashKeys= merklePath.keySet();
+        MerkleTreeNode[] nodeArray= hashKeys.toArray(new MerkleTreeNode[hashKeys.size()]);
+        String currHash=nodeArray[0].hashValue;
+        for (int i=1;i<nodeArray.length;i++) {
+        	String nodeLocation=merklePath.get(nodeArray[i]);
+        	if(nodeLocation.equals(left)) {
+        		currHash = Encrypt.generateHash(nodeArray[i].getHashValue() + currHash);
+        	}else {
+        		currHash = Encrypt.generateHash(currHash+ nodeArray[i].getHashValue());
+        	}
+        }
+        
+        if(currHash.equals(getMerkleRoot().hashValue)) {
+        	return true;
+        }
+        return false;
     }
 }
 
