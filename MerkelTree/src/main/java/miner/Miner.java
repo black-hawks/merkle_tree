@@ -4,26 +4,42 @@ import blockchain.Block;
 import blockchain.Blockchain;
 import blockchain.Transaction;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.List;
 
 public class Miner {
-    private Blockchain blockchain;
+    private final Blockchain blockchain;
+    private final TransactionReader transactionReader;
 
-    public Miner(Blockchain blockchain) {
-        this.blockchain = blockchain;
+    public Miner() throws FileNotFoundException {
+        this(new Blockchain());
     }
 
-    public void mine() throws IOException {
-        TransactionReader transactionReader = new TransactionReader("sorted.csv", Duration.ofSeconds(1));
+    public Miner(Blockchain blockchain) throws FileNotFoundException {
+        this.blockchain = blockchain;
+        transactionReader = new TransactionReader("transactions.csv", Duration.ofSeconds(1));
+    }
+
+    public void mine() {
         while (true) {
-            List<Transaction> transactions = transactionReader.getTransactions();
-            if (transactions == null) {
+            Block block = this.createBlock();
+            if (block == null) {
                 break;
             }
-            Block block = new Block(transactions.get(0).getTimestamp(), transactions);
             blockchain.addBlock(block);
         }
+    }
+
+    public Block createBlock() {
+        List<Transaction> transactions = this.getTransactions();
+        if (transactions == null) {
+            return null;
+        }
+        return new Block(transactions.get(0).getTimestamp(), transactions);
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactionReader.getTransactions();
     }
 }

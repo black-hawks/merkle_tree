@@ -25,7 +25,7 @@ public class Transaction {
     /**
      * The amount of money being transferred in the transaction.
      */
-    private final double amount;
+    private double amount;
 
     /**
      * The timestamp when the transaction was made.
@@ -92,6 +92,10 @@ public class Transaction {
      */
     public long getTimestamp() {
         return timestamp;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public String toString() {
