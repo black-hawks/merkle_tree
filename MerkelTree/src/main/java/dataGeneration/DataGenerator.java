@@ -54,7 +54,7 @@ public class DataGenerator {
             writer.flush();
             writer.close();
             ExternalMergeSort externalMergeSort=new ExternalMergeSort();
-            externalMergeSort.sort("data.csv","sorted.csv");
+            externalMergeSort.sort("data.csv","transactions.csv");
 
         }catch (IOException e){
             e.printStackTrace();
