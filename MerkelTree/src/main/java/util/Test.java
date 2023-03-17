@@ -34,7 +34,7 @@ public class Test {
 		System.out.print("Merkle path: ");
 		//merklePath.entrySet().stream().forEach(key -> System.out.print((MerkleTreeNode)key.+" => "));
 
-		System.out.println("Merkel Proof= "+ tree.getMerkleProof(merklePath));
+		System.out.println("Merkel Proof= "+ tree.verifyMerkleProof(merklePath));
 
 	}
 
