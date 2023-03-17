@@ -20,12 +20,12 @@ import blockchain.Transaction;
 public class MerkleTree {
     private List<Transaction> transactions;
     private List<MerkleTreeNode> merkleTree;
-    
+
     private final String left="LEFT";
     private final String right="RIGHT";
-   
-    
-    
+
+
+
 
     public MerkleTree(List<Transaction> transactions) {
         this.transactions = transactions;
@@ -36,7 +36,7 @@ public class MerkleTree {
     	MerkleTreeNode merkleRoot = generateTree(transactions);
         return merkleRoot;
     }
- 
+
     /**
      * This Method take list of transaction and then first encrypt the Transactions
      * Then calls  buildMerkleTree to create the tree
@@ -57,9 +57,9 @@ public class MerkleTree {
     /**
      * This method takes List of child nodes for the MerkleTree
      * Then generate hash for each pair of child nodes, this hash will be the hashValue of ParentNode
-     * If the number of child nodes are odd, then to create parent node we first 
+     * If the number of child nodes are odd, then to create parent node we first
      * create sibling right node which is copy of left most child
-     * such 
+     * such
      * @param children List of Child nodes
      * @return MerkleTreeRoot Root of the MerkleTree
      */
@@ -126,12 +126,12 @@ public class MerkleTree {
             }
 
         }
-        
-   
+
+
     }
-    
-    /** Find the Merkle Path 
-     * 
+
+    /** Find the Merkle Path
+     *
      * @param index leaf node index
      * @return LinkedHashMap the MerkleTreeNode and its location with respect to its parent
      */
@@ -154,13 +154,14 @@ public class MerkleTree {
         }
         return merklePath;
     }
-    
+
     /**
      * Compare the MeklePath with Current Root hash Values
+     *
      * @param merklePath take the merkle path
      * @return boolean true if proof is verified else false
      */
-    public boolean getMerkleProof(LinkedHashMap<MerkleTreeNode,String> merklePath ) {
+    public String getMerkleProof(LinkedHashMap<MerkleTreeNode,String> merklePath ) {
         System.out.println("Generating Merkle Proof...");
         Set<MerkleTreeNode> hashKeys= merklePath.keySet();
         MerkleTreeNode[] nodeArray= hashKeys.toArray(new MerkleTreeNode[hashKeys.size()]);
@@ -173,11 +174,12 @@ public class MerkleTree {
         		currHash = Encrypt.generateHash(currHash+ nodeArray[i].getHashValue());
         	}
         }
-        
-        if(currHash.equals(getMerkleRoot().hashValue)) {
-        	return true;
-        }
-        return false;
+        return currHash;
+    }
+
+    public boolean verifyMerkleProof(LinkedHashMap<MerkleTreeNode,String> merklePath ) {
+        String currHash = getMerkleProof(merklePath);
+        return currHash.equals(getMerkleRoot().hashValue);
     }
 }
 
