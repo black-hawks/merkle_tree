@@ -18,7 +18,8 @@ public class Main {
         Miner miner = new Miner();
         List<Transaction> transactions = miner.getTransactions();
         long startTime = System.currentTimeMillis();
-        MerkleTreeNode root = MerkleTree.generateMerkleRoot(transactions);
+        MerkleTree merkleTree = new MerkleTree(transactions);
+        MerkleTreeNode root = merkleTree.generateMerkleRoot();
         System.out.println("Took " + (System.currentTimeMillis() - startTime) + " ms to generate Merkle tree for "
                 + transactions.size() + " transactions");
         System.out.println("Merkle root hash: " + root.hashValue());

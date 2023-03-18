@@ -12,7 +12,13 @@ import java.util.*;
  */
 public class MerkleTree {
 
-    public static MerkleTreeNode generateMerkleRoot(List<Transaction> transactions) {
+    private List<Transaction> transactions;
+
+    public MerkleTree(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public MerkleTreeNode generateMerkleRoot() {
         List<MerkleTreeNode> childNodes = new ArrayList<>();
         for (Transaction transaction : transactions) {
             childNodes.add(new MerkleTreeNode(null, null, Encrypt.encryptThisTransaction(transaction)));
@@ -20,7 +26,7 @@ public class MerkleTree {
         return buildMerkleTree(childNodes);
     }
 
-    public static void printTree(MerkleTreeNode root) {
+    public void printTree(MerkleTreeNode root) {
         if (root == null) {
             return;
         }
@@ -58,7 +64,7 @@ public class MerkleTree {
      * @param children List of Child nodes
      * @return MerkleTreeRoot Root of the MerkleTree
      */
-    private static MerkleTreeNode buildMerkleTree(List<MerkleTreeNode> children) {
+    private MerkleTreeNode buildMerkleTree(List<MerkleTreeNode> children) {
         List<MerkleTreeNode> parents = new ArrayList<>();
 
         while (children.size() != 1) {

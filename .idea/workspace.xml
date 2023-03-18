@@ -4,26 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3bd478f-4b08-4e42-919b-39d3d9337af3" name="Changes" comment="Work with eclipse">
+    <list default="true" id="a3bd478f-4b08-4e42-919b-39d3d9337af3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchain/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchain/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Blockchain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchain/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataGeneration/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataGeneration/DataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataGeneration/ExternalMergeSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataGeneration/ExternalMergeSort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataStructure/linkedList/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/linkedList/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataStructure/linkedList/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/linkedList/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataStructure/merkleTree/MerkleTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/MerkleTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataStructure/merkleTree/MerkleTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/MerkleTreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataStructure/merkleTree/NodeDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/NodeDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/miner/Miner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/miner/Miner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/miner/TransactionReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/miner/TransactionReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/util/CSVReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Encrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/util/Encrypt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BlockIntegrityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/blockchainMerkleTree/BlockIntegrityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TransactionIntegrityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/blockchainMerkleTree/TransactionIntegrityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/MerkleTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/MerkleTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/blockchainMerkleTree/BlockIntegrityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/blockchainMerkleTree/BlockIntegrityTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +32,7 @@
       <recent name="blockchainMerkleTree" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.blockchainMerkleTree in MerkelTree">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="blockchainMerkleTree.Main" />
       <module name="MerkelTree" />
@@ -107,8 +93,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.blockchainMerkleTree in MerkelTree" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TransactionIntegrityTest" />
         <item itemvalue="JUnit.BlockIntegrityTest" />
       </list>
@@ -122,11 +108,26 @@
       <option name="project" value="LOCAL" />
       <updated>1679153677955</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Work with eclipse">
+      <created>1679155315306</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679155315306</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Refactor printTree()">
+      <created>1679155535729</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679155535729</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Work with eclipse" />
-    <option name="LAST_COMMIT_MESSAGE" value="Work with eclipse" />
+    <MESSAGE value="Refactor printTree()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor printTree()" />
   </component>
 </project>
