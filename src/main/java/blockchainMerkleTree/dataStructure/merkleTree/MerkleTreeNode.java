@@ -10,7 +10,30 @@ package blockchainMerkleTree.dataStructure.merkleTree;
  * @author vivek
  */
 
-public record MerkleTreeNode(MerkleTreeNode left, MerkleTreeNode right, String hashValue) {
+public class MerkleTreeNode {
+
+    private final MerkleTreeNode left;
+    private final MerkleTreeNode right;
+    private final String hashValue;
+
+    public MerkleTreeNode(MerkleTreeNode left, MerkleTreeNode right, String hashValue) {
+        this.left = left;
+        this.right = right;
+        this.hashValue = hashValue;
+    }
+
+    public MerkleTreeNode getLeft() {
+        return left;
+    }
+
+    public MerkleTreeNode getRight() {
+        return right;
+    }
+
+    public String getHashValue() {
+        return hashValue;
+    }
+
     public String toString() {
         return "MerkleTreeNode{" +
                 "hashValue='" + hashValue.substring(0, 4) + '\'' +

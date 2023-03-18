@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3bd478f-4b08-4e42-919b-39d3d9337af3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/MerkleTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/MerkleTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/blockchainMerkleTree/BlockIntegrityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/blockchainMerkleTree/BlockIntegrityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/MerkleTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/merkleTree/MerkleTreeNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,12 +119,20 @@
       <option name="project" value="LOCAL" />
       <updated>1679155535729</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactor MerkleTree">
+      <created>1679163842824</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679163842824</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Work with eclipse" />
     <MESSAGE value="Refactor printTree()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor printTree()" />
+    <MESSAGE value="Refactor MerkleTree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor MerkleTree" />
   </component>
 </project>

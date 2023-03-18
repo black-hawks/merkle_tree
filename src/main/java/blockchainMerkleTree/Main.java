@@ -22,18 +22,18 @@ public class Main {
         MerkleTreeNode root = merkleTree.generateMerkleRoot();
         System.out.println("Took " + (System.currentTimeMillis() - startTime) + " ms to generate Merkle tree for "
                 + transactions.size() + " transactions");
-        System.out.println("Merkle root hash: " + root.hashValue());
+        System.out.println("Merkle root hash: " + root.getHashValue());
         int transactionIndex = 123;
         System.out.println("Validating transaction at index " + transactionIndex);
         Deque<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath = MerkleTree.getMerklePath(root, transactionIndex);
         System.out.print("Merkle Path: ");
         for (Map.Entry<MerkleTreeNode, NodeDirection> entry : merklePath) {
-            System.out.print(entry.getKey().hashValue().substring(0, 4) + " => ");
+            System.out.print(entry.getKey().getHashValue().substring(0, 4) + " => ");
         }
         System.out.println();
         String merkleProofHash = MerkleTree.getMerkleProof(Encrypt.encryptThisTransaction(transactions.get(transactionIndex)), merklePath);
         System.out.println("Merkle proof hash: " + merkleProofHash);
-        if (merkleProofHash.equals(root.hashValue())) {
+        if (merkleProofHash.equals(root.getHashValue())) {
             System.out.println("Merkle proof hash matches with the root hash value.");
         } else {
             System.out.println("Merkle proof hash does not matches with the root hash value. Tampering detected.");
