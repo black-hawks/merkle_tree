@@ -1,23 +1,15 @@
 package dataStructure.linkedList;
 
 public class Node<E> {
-    private E element;
-    private Node<E> prev;
+    private final E element;
+    private Node<E> previous;
 
-    public Node(E element, Node<E> prev) {
+    public Node(E element, Node<E> previous) {
         this.element = element;
-        this.prev = prev;
+        this.previous = previous;
     }
 
-    public E getElement() {
-        return element;
-    }
-
-    public Node<E> getPrevious() {
-        return prev;
-    }
-
-    public void setPrevious (Node<E> prev) {
-        this.prev = prev;
+    public void setPrevious(Node<E> previous) {
+        this.previous = previous;
     }
 }

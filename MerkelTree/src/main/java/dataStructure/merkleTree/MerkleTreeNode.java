@@ -3,47 +3,49 @@ package dataStructure.merkleTree;
 /**
  * MerkleTreeNode class is a POJO class
  * which represent the structure of a node in a MerkleTree
- * 
+ * <p>
  * Since MerkleTree is a Binary Tree
  * each node in MerkleTree(except leaf node) will have left child, right child and the value
- * @author vivek
  *
+ * @author vivek
  */
 
 public class MerkleTreeNode {
+    private MerkleTreeNode parent;
+    private final MerkleTreeNode left;
+    private final MerkleTreeNode right;
+    private final String hashValue;
 
-	MerkleTreeNode left;
-	MerkleTreeNode right;
+    public MerkleTreeNode(MerkleTreeNode left, MerkleTreeNode right, String hashValue) {
+        this.left = left;
+        this.right = right;
+        this.hashValue = hashValue;
+    }
 
-    String hashValue;
 
-
-    public MerkleTreeNode getLeft(){
+    public MerkleTreeNode getLeft() {
         return left;
     }
 
-    public MerkleTreeNode getRight(){
+    public MerkleTreeNode getRight() {
         return right;
     }
 
-    public String getHashValue(){
+    public MerkleTreeNode getParent() {
+        return parent;
+    }
+
+    public String getHashValue() {
         return hashValue;
     }
 
-    public MerkleTreeNode(MerkleTreeNode left, MerkleTreeNode right, String hashValue){
-        this.left = left;
-        this.right = right;
-        this.hashValue=hashValue;
-    }
-    public void setLeft(MerkleTreeNode left) {
-        this.left = left;
+    public void setParent(MerkleTreeNode parent) {
+        this.parent = parent;
     }
 
-    public void setRight(MerkleTreeNode right) {
-        this.right = right;
-    }
-
-    public void setHashValue(String value) {
-        this.hashValue = value;
+    public String toString() {
+        return "MerkleTreeNode{" +
+                "hashValue='" + hashValue.substring(0, 4) + '\'' +
+                '}';
     }
 }
