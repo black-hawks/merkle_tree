@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MerkelTree/MerkelTree.iml" filepath="$PROJECT_DIR$/MerkelTree/MerkelTree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MerkelTree.iml" filepath="$PROJECT_DIR$/MerkelTree.iml" />
     </modules>
   </component>
 </project>
