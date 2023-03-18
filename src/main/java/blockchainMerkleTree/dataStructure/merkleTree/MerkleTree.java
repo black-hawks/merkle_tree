@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class MerkleTree {
 
-    private List<Transaction> transactions;
+    private final List<Transaction> transactions;
 
     public MerkleTree(List<Transaction> transactions) {
         this.transactions = transactions;
@@ -39,14 +39,14 @@ public class MerkleTree {
 
             for (int i = 0; i < levelSize; i++) {
                 MerkleTreeNode node = queue.poll();
-                System.out.print(node.hashValue().substring(0, 4) + " ");
+                System.out.print(node.getHashValue().substring(0, 4) + " ");
 
-                if (node.left() != null) {
-                    queue.offer(node.left());
+                if (node.getLeft() != null) {
+                    queue.offer(node.getLeft());
                 }
 
-                if (node.right() != null) {
-                    queue.offer(node.right());
+                if (node.getRight() != null) {
+                    queue.offer(node.getRight());
                 }
             }
 
@@ -76,9 +76,9 @@ public class MerkleTree {
                 if ((index + 1) < length) {
                     rightChild = children.get(index + 1);
                 } else {
-                    rightChild = new MerkleTreeNode(null, null, leftChild.hashValue());
+                    rightChild = new MerkleTreeNode(null, null, leftChild.getHashValue());
                 }
-                String parentHash = Encrypt.generateHash(leftChild.hashValue() + rightChild.hashValue());
+                String parentHash = Encrypt.generateHash(leftChild.getHashValue() + rightChild.getHashValue());
                 MerkleTreeNode parent = new MerkleTreeNode(leftChild, rightChild, parentHash);
                 parents.add(parent);
                 index += 2;
@@ -95,15 +95,15 @@ public class MerkleTree {
         int height = getHeight(root);
         int start = 0;
         int end = (int) (Math.pow(2, height) - 1);
-        while (root.left() != null) {
+        while (root.getLeft() != null) {
             int median = (end + start) / 2;
             if (transactionIndex <= median) {
-                path.push(new AbstractMap.SimpleEntry<>(root.right(), NodeDirection.RIGHT));
-                root = root.left();
+                path.push(new AbstractMap.SimpleEntry<>(root.getRight(), NodeDirection.RIGHT));
+                root = root.getLeft();
                 end = median;
             } else {
-                path.push(new AbstractMap.SimpleEntry<>(root.left(), NodeDirection.LEFT));
-                root = root.right();
+                path.push(new AbstractMap.SimpleEntry<>(root.getLeft(), NodeDirection.LEFT));
+                root = root.getRight();
                 start = median + 1;
             }
         }
@@ -125,9 +125,9 @@ public class MerkleTree {
         while (!merklePath.isEmpty()) {
             Map.Entry<MerkleTreeNode, NodeDirection> path = merklePath.pop();
             if (path.getValue().equals(NodeDirection.LEFT)) {
-                currentHash = Encrypt.generateHash(path.getKey().hashValue() + currentHash);
+                currentHash = Encrypt.generateHash(path.getKey().getHashValue() + currentHash);
             } else {
-                currentHash = Encrypt.generateHash(currentHash + path.getKey().hashValue());
+                currentHash = Encrypt.generateHash(currentHash + path.getKey().getHashValue());
             }
         }
         System.out.println("Took " + (double) (System.nanoTime() - startTime) / 1000000 + " ms to get the merkle proof where merkle path is of length " + merklePathLength);
@@ -136,9 +136,9 @@ public class MerkleTree {
 
     private static int getHeight(MerkleTreeNode root) {
         int height = 0;
-        while (root.left() != null) {
+        while (root.getLeft() != null) {
             height++;
-            root = root.left();
+            root = root.getLeft();
         }
         return height;
     }

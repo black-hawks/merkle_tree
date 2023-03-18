@@ -35,7 +35,7 @@ public class TransactionIntegrityTest {
     public void validTransaction() {
         AbstractMap.SimpleEntry<Integer, Block> entry = blockchain.getTransactionBlock("2e1816ea-a330-4313-a7d8-4635da002d98");
         MerkleTreeNode root = entry.getValue().getMerkleRoot();
-        String actualHash = root.hashValue();
+        String actualHash = root.getHashValue();
         Transaction transaction = entry.getValue().getTransactions().get(entry.getKey());
         Deque<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath = MerkleTree.getMerklePath(root, entry.getKey());
         String expectedHash = MerkleTree.getMerkleProof(Encrypt.encryptThisTransaction(transaction), merklePath);
@@ -47,7 +47,7 @@ public class TransactionIntegrityTest {
     public void tamperedTransaction() {
         AbstractMap.SimpleEntry<Integer, Block> entry = blockchain.getTransactionBlock("2e1816ea-a330-4313-a7d8-4635da002d98");
         MerkleTreeNode root = entry.getValue().getMerkleRoot();
-        String actualHash = root.hashValue();
+        String actualHash = root.getHashValue();
         entry.getValue().getTransactions().get(entry.getKey()).setAmount(999999);
         Transaction transaction = entry.getValue().getTransactions().get(entry.getKey());
         Deque<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath = MerkleTree.getMerklePath(root, entry.getKey());
@@ -60,7 +60,7 @@ public class TransactionIntegrityTest {
     public void compromisedBlock() {
         AbstractMap.SimpleEntry<Integer, Block> entry = blockchain.getTransactionBlock("2e1816ea-a330-4313-a7d8-4635da002d98");
         MerkleTreeNode root = entry.getValue().getMerkleRoot();
-        String actualHash = root.hashValue();
+        String actualHash = root.getHashValue();
         entry.getValue().getTransactions().get(0).setAmount(999999);
         Transaction transaction = entry.getValue().getTransactions().get(entry.getKey());
         Deque<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath = MerkleTree.getMerklePath(root, entry.getKey());

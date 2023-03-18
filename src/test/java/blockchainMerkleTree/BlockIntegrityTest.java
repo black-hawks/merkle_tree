@@ -26,10 +26,10 @@ class BlockIntegrityTest {
     @Test
     @DisplayName("Block is not tampered")
     public void blockIsNotTampered() {
-        String actualHash = block.getMerkleRoot().hashValue();
+        String actualHash = block.getMerkleRoot().getHashValue();
         List<Transaction> transactions = block.getTransactions();
         MerkleTree merkleTree = new MerkleTree(transactions);
-        String expectedHash = merkleTree.generateMerkleRoot().hashValue();
+        String expectedHash = merkleTree.generateMerkleRoot().getHashValue();
         assertEquals(expectedHash, actualHash, "Block merkle root hash was expected to be correct");
     }
 
@@ -38,10 +38,10 @@ class BlockIntegrityTest {
     public void blockIsTamperedWithNewTransaction() {
         Transaction invalidTransaction = new Transaction("XXX", "victim", "attacker", 100000, System.currentTimeMillis());
         block.getTransactions().add(invalidTransaction);
-        String actualHash = block.getMerkleRoot().hashValue();
+        String actualHash = block.getMerkleRoot().getHashValue();
         List<Transaction> transactions = block.getTransactions();
         MerkleTree merkleTree = new MerkleTree(transactions);
-        String expectedHash = merkleTree.generateMerkleRoot().hashValue();
+        String expectedHash = merkleTree.generateMerkleRoot().getHashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 
@@ -50,10 +50,10 @@ class BlockIntegrityTest {
     public void blockIsTamperedByReplacingTransaction() {
         Transaction invalidTransaction = new Transaction("XXX", "victim", "attacker", 100000, System.currentTimeMillis());
         block.getTransactions().add(0, invalidTransaction);
-        String actualHash = block.getMerkleRoot().hashValue();
+        String actualHash = block.getMerkleRoot().getHashValue();
         List<Transaction> transactions = block.getTransactions();
         MerkleTree merkleTree = new MerkleTree(transactions);
-        String expectedHash = merkleTree.generateMerkleRoot().hashValue();
+        String expectedHash = merkleTree.generateMerkleRoot().getHashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 
@@ -61,10 +61,10 @@ class BlockIntegrityTest {
     @DisplayName("Block is tampered by changing a valid transaction")
     public void blockIsTamperedByChangingTransaction() {
         block.getTransactions().get(0).setAmount(999999);
-        String actualHash = block.getMerkleRoot().hashValue();
+        String actualHash = block.getMerkleRoot().getHashValue();
         List<Transaction> transactions = block.getTransactions();
         MerkleTree merkleTree = new MerkleTree(transactions);
-        String expectedHash = merkleTree.generateMerkleRoot().hashValue();
+        String expectedHash = merkleTree.generateMerkleRoot().getHashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 }
