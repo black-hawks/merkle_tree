@@ -3,10 +3,10 @@
  * <p>
  * The flight data includes flight departure time, flight number, and flight durations.
  */
-package miner;
+package blockchainMerkleTree.miner;
 
-import blockchain.Transaction;
-import util.CSVReader;
+import blockchainMerkleTree.blockchain.Transaction;
+import blockchainMerkleTree.util.CSVReader;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

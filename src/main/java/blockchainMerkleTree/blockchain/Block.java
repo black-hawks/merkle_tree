@@ -1,8 +1,8 @@
 
-package blockchain;
+package blockchainMerkleTree.blockchain;
 
-import dataStructure.merkleTree.MerkleTree;
-import dataStructure.merkleTree.MerkleTreeNode;
+import blockchainMerkleTree.dataStructure.merkleTree.MerkleTree;
+import blockchainMerkleTree.dataStructure.merkleTree.MerkleTreeNode;
 
 import java.util.List;
 

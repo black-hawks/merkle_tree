@@ -1,5 +1,5 @@
 
-package blockchain;
+package blockchainMerkleTree.blockchain;
 
 import java.util.Date;
 

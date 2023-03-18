@@ -1,4 +1,4 @@
-package dataStructure.linkedList;
+package blockchainMerkleTree.dataStructure.linkedList;
 
 public class Node<E> {
     private final E element;

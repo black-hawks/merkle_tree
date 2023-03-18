@@ -1,8 +1,8 @@
-package miner;
+package blockchainMerkleTree.miner;
 
-import blockchain.Block;
-import blockchain.Blockchain;
-import blockchain.Transaction;
+import blockchainMerkleTree.blockchain.Block;
+import blockchainMerkleTree.blockchain.Blockchain;
+import blockchainMerkleTree.blockchain.Transaction;
 
 import java.io.FileNotFoundException;
 import java.time.Duration;

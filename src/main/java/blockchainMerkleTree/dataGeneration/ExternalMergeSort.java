@@ -1,18 +1,15 @@
-package dataGeneration;
-
-/**
-
- The ExternalMergeSort class provides a method to sort a large CSV file using an external merge sort algorithm.
- The sort method reads in the input CSV file, divides it into smaller chunks, sorts them, and merges them back into a single sorted file.
- The mergeSort method performs the merge sort algorithm on a list of CSV entries.
- The merge method merges two sublists of CSV entries into a single sorted list.
- */
-
+package blockchainMerkleTree.dataGeneration;
 
 import java.io.*;
 import java.util.*;
 
 /**
+ *
+ * The ExternalMergeSort class provides a method to sort a large CSV file using an external merge sort algorithm.
+ * The sort method reads in the input CSV file, divides it into smaller chunks, sorts them, and merges them back into a single sorted file.
+ * The mergeSort method performs the merge sort algorithm on a list of CSV entries.
+ * The merge method merges two sublist of CSV entries into a single sorted list.
+ *
  * @author ravi
  *
  */
@@ -81,7 +78,7 @@ public class ExternalMergeSort {
     }
 
     /**
-     * Merges two sorted sublists of CSV entries into a single sorted list.
+     * Merges two sorted sublist of CSV entries into a single sorted list.
      *
      * @param entries the list of CSV entries to merge
      * @param left the left index of the first sublist
