@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-class TamperingDetectionTest {
+class BlockIntegrityTest {
     static Block block;
 
     @BeforeEach
@@ -26,8 +26,7 @@ class TamperingDetectionTest {
     public void blockIsNotTampered() {
         String actualHash = block.getMerkleRoot().getHashValue();
         List<Transaction> transactions = block.getTransactions();
-        MerkleTree merkleTree = new MerkleTree(transactions);
-        String expectedHash = merkleTree.getMerkleRoot().getHashValue();
+        String expectedHash = MerkleTree.generateMerkleRoot(transactions).getHashValue();
         assertEquals(expectedHash, actualHash, "Block merkle root hash was expected to be correct");
     }
 
@@ -38,8 +37,7 @@ class TamperingDetectionTest {
         block.getTransactions().add(invalidTransaction);
         String actualHash = block.getMerkleRoot().getHashValue();
         List<Transaction> transactions = block.getTransactions();
-        MerkleTree merkleTree = new MerkleTree(transactions);
-        String expectedHash = merkleTree.getMerkleRoot().getHashValue();
+        String expectedHash = MerkleTree.generateMerkleRoot(transactions).getHashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 
@@ -50,8 +48,7 @@ class TamperingDetectionTest {
         block.getTransactions().add(0, invalidTransaction);
         String actualHash = block.getMerkleRoot().getHashValue();
         List<Transaction> transactions = block.getTransactions();
-        MerkleTree merkleTree = new MerkleTree(transactions);
-        String expectedHash = merkleTree.getMerkleRoot().getHashValue();
+        String expectedHash = MerkleTree.generateMerkleRoot(transactions).getHashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 
@@ -61,8 +58,7 @@ class TamperingDetectionTest {
         block.getTransactions().get(0).setAmount(999999);
         String actualHash = block.getMerkleRoot().getHashValue();
         List<Transaction> transactions = block.getTransactions();
-        MerkleTree merkleTree = new MerkleTree(transactions);
-        String expectedHash = merkleTree.getMerkleRoot().getHashValue();
+        String expectedHash = MerkleTree.generateMerkleRoot(transactions).getHashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 }

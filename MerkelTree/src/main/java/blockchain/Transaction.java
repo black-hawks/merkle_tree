@@ -1,10 +1,11 @@
 
-/**
- * Transaction class represents a financial transaction between two parties.
- */
 package blockchain;
 
 import java.util.Date;
+
+/**
+ * Transaction class represents a financial transaction between two parties.
+ */
 
 public class Transaction {
     /**

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionReader extends CSVReader {
-    private Duration period;
+    private final Duration period;
 
     /**
      * Constructor for FlightReader class.
