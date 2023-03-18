@@ -18,6 +18,13 @@ public class MerkleTree {
         this.transactions = transactions;
     }
 
+
+    /**
+     * Generates the Merkle Root for the given List of Transaction
+     * Creates MerkleTreeNode for all the Transactions and calls buildMerkleTree
+     *
+     * @return MerkleTreeNode as merkleRoot
+     */
     public MerkleTreeNode generateMerkleRoot() {
         List<MerkleTreeNode> childNodes = new ArrayList<>();
         for (Transaction transaction : transactions) {
@@ -26,6 +33,10 @@ public class MerkleTree {
         return buildMerkleTree(childNodes);
     }
 
+    /**
+     * Print the entire merkle tree
+     * @param root MerkleTreeNode
+     */
     public void printTree(MerkleTreeNode root) {
         if (root == null) {
             return;
@@ -89,6 +100,14 @@ public class MerkleTree {
         return children.get(0);
     }
 
+    /**
+     * To generate Merkle Path for the tree
+     * Merkle path is minimum number of hashes required to generate the root
+     * for the given transaction index
+     * @param root
+     * @param transactionIndex
+     * @return merklePath
+     */
     public static Deque<Map.Entry<MerkleTreeNode, NodeDirection>> getMerklePath(MerkleTreeNode root, int transactionIndex) {
         long startTime = System.nanoTime();
         Deque<Map.Entry<MerkleTreeNode, NodeDirection>> path = new ArrayDeque<>();
@@ -111,13 +130,13 @@ public class MerkleTree {
         return path;
     }
 
-    //
-//    /**
-//     * Compare the MeklePath with Current Root hash Values
-//     *
-//     * @param merklePath take the merkle path
-//     * @return boolean true if proof is verified else false
-//     */
+
+    /**
+     * Compare the MeklePath with Current Root hash Values
+     *
+     * @param merklePath take the merkle path
+     * @return boolean true if proof is verified else false
+     */
     public static String getMerkleProof(String transactionHash, Deque<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath) {
         long startTime = System.nanoTime();
         int merklePathLength = merklePath.size();
@@ -134,6 +153,11 @@ public class MerkleTree {
         return currentHash;
     }
 
+    /**
+     * Height of Merkle Tree
+     * @param root
+     * @return height
+     */
     private static int getHeight(MerkleTreeNode root) {
         int height = 0;
         while (root.getLeft() != null) {
