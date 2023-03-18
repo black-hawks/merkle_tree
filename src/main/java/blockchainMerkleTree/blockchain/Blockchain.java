@@ -1,6 +1,6 @@
-package blockchain;
+package blockchainMerkleTree.blockchain;
 
-import dataStructure.linkedList.LinkedList;
+import blockchainMerkleTree.dataStructure.linkedList.LinkedList;
 
 import java.util.AbstractMap;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
-package util;
+package blockchainMerkleTree.util;
 
-import blockchain.Transaction;
+import blockchainMerkleTree.blockchain.Transaction;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

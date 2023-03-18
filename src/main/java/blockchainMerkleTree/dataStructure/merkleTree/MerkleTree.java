@@ -1,7 +1,7 @@
-package dataStructure.merkleTree;
+package blockchainMerkleTree.dataStructure.merkleTree;
 
-import blockchain.Transaction;
-import util.Encrypt;
+import blockchainMerkleTree.blockchain.Transaction;
+import blockchainMerkleTree.util.Encrypt;
 
 import java.util.*;
 
@@ -33,14 +33,14 @@ public class MerkleTree {
 
             for (int i = 0; i < levelSize; i++) {
                 MerkleTreeNode node = queue.poll();
-                System.out.print(node.getHashValue().substring(0, 4) + " ");
+                System.out.print(node.hashValue().substring(0, 4) + " ");
 
-                if (node.getLeft() != null) {
-                    queue.offer(node.getLeft());
+                if (node.left() != null) {
+                    queue.offer(node.left());
                 }
 
-                if (node.getRight() != null) {
-                    queue.offer(node.getRight());
+                if (node.right() != null) {
+                    queue.offer(node.right());
                 }
             }
 
@@ -70,12 +70,10 @@ public class MerkleTree {
                 if ((index + 1) < length) {
                     rightChild = children.get(index + 1);
                 } else {
-                    rightChild = new MerkleTreeNode(null, null, leftChild.getHashValue());
+                    rightChild = new MerkleTreeNode(null, null, leftChild.hashValue());
                 }
-                String parentHash = Encrypt.generateHash(leftChild.getHashValue() + rightChild.getHashValue());
+                String parentHash = Encrypt.generateHash(leftChild.hashValue() + rightChild.hashValue());
                 MerkleTreeNode parent = new MerkleTreeNode(leftChild, rightChild, parentHash);
-                leftChild.setParent(parent);
-                rightChild.setParent(parent);
                 parents.add(parent);
                 index += 2;
             }
@@ -85,21 +83,21 @@ public class MerkleTree {
         return children.get(0);
     }
 
-    public static Stack<Map.Entry<MerkleTreeNode, NodeDirection>> getMerklePath(MerkleTreeNode root, int transactionIndex) {
+    public static Deque<Map.Entry<MerkleTreeNode, NodeDirection>> getMerklePath(MerkleTreeNode root, int transactionIndex) {
         long startTime = System.nanoTime();
-        Stack<Map.Entry<MerkleTreeNode, NodeDirection>> path = new Stack<>();
+        Deque<Map.Entry<MerkleTreeNode, NodeDirection>> path = new ArrayDeque<>();
         int height = getHeight(root);
         int start = 0;
         int end = (int) (Math.pow(2, height) - 1);
-        while (root.getLeft() != null) {
+        while (root.left() != null) {
             int median = (end + start) / 2;
             if (transactionIndex <= median) {
-                path.push(new AbstractMap.SimpleEntry<>(root.getRight(), NodeDirection.RIGHT));
-                root = root.getLeft();
+                path.push(new AbstractMap.SimpleEntry<>(root.right(), NodeDirection.RIGHT));
+                root = root.left();
                 end = median;
             } else {
-                path.push(new AbstractMap.SimpleEntry<>(root.getLeft(), NodeDirection.LEFT));
-                root = root.getRight();
+                path.push(new AbstractMap.SimpleEntry<>(root.left(), NodeDirection.LEFT));
+                root = root.right();
                 start = median + 1;
             }
         }
@@ -114,16 +112,16 @@ public class MerkleTree {
 //     * @param merklePath take the merkle path
 //     * @return boolean true if proof is verified else false
 //     */
-    public static String getMerkleProof(String transactionHash, Stack<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath) {
+    public static String getMerkleProof(String transactionHash, Deque<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath) {
         long startTime = System.nanoTime();
         int merklePathLength = merklePath.size();
         String currentHash = transactionHash;
         while (!merklePath.isEmpty()) {
             Map.Entry<MerkleTreeNode, NodeDirection> path = merklePath.pop();
             if (path.getValue().equals(NodeDirection.LEFT)) {
-                currentHash = Encrypt.generateHash(path.getKey().getHashValue() + currentHash);
+                currentHash = Encrypt.generateHash(path.getKey().hashValue() + currentHash);
             } else {
-                currentHash = Encrypt.generateHash(currentHash + path.getKey().getHashValue());
+                currentHash = Encrypt.generateHash(currentHash + path.getKey().hashValue());
             }
         }
         System.out.println("Took " + (double) (System.nanoTime() - startTime) / 1000000 + " ms to get the merkle proof where merkle path is of length " + merklePathLength);
@@ -132,9 +130,9 @@ public class MerkleTree {
 
     private static int getHeight(MerkleTreeNode root) {
         int height = 0;
-        while (root.getLeft() != null) {
+        while (root.left() != null) {
             height++;
-            root = root.getLeft();
+            root = root.left();
         }
         return height;
     }
