@@ -35,7 +35,19 @@ public class Block {
     public Block(long timestamp, List<Transaction> transactions) {
         this.timestamp = timestamp;
         this.transactions = transactions;
-        this.merkleRoot = MerkleTree.generateMerkleRoot(transactions);
+        this.merkleRoot = generateMerkleRoot(transactions);
+    }
+
+    /**
+     * Generates the Merkle root for the given list of transactions.
+     *
+     * @param transactions the list of transactions to generate the Merkle Tree for given list of transactions
+     * @return the Merkle root of the transactions
+     */
+
+    private MerkleTreeNode generateMerkleRoot(List<Transaction> transactions) {
+        MerkleTree merkleTree = new MerkleTree(transactions);
+        return merkleTree.generateMerkleRoot();
     }
 
     /**

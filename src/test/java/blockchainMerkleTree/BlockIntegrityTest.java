@@ -28,7 +28,8 @@ class BlockIntegrityTest {
     public void blockIsNotTampered() {
         String actualHash = block.getMerkleRoot().hashValue();
         List<Transaction> transactions = block.getTransactions();
-        String expectedHash = MerkleTree.generateMerkleRoot(transactions).hashValue();
+        MerkleTree merkleTree = new MerkleTree(transactions);
+        String expectedHash = merkleTree.generateMerkleRoot().hashValue();
         assertEquals(expectedHash, actualHash, "Block merkle root hash was expected to be correct");
     }
 
@@ -39,7 +40,8 @@ class BlockIntegrityTest {
         block.getTransactions().add(invalidTransaction);
         String actualHash = block.getMerkleRoot().hashValue();
         List<Transaction> transactions = block.getTransactions();
-        String expectedHash = MerkleTree.generateMerkleRoot(transactions).hashValue();
+        MerkleTree merkleTree = new MerkleTree(transactions);
+        String expectedHash = merkleTree.generateMerkleRoot().hashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 
@@ -50,7 +52,8 @@ class BlockIntegrityTest {
         block.getTransactions().add(0, invalidTransaction);
         String actualHash = block.getMerkleRoot().hashValue();
         List<Transaction> transactions = block.getTransactions();
-        String expectedHash = MerkleTree.generateMerkleRoot(transactions).hashValue();
+        MerkleTree merkleTree = new MerkleTree(transactions);
+        String expectedHash = merkleTree.generateMerkleRoot().hashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 
@@ -60,7 +63,8 @@ class BlockIntegrityTest {
         block.getTransactions().get(0).setAmount(999999);
         String actualHash = block.getMerkleRoot().hashValue();
         List<Transaction> transactions = block.getTransactions();
-        String expectedHash = MerkleTree.generateMerkleRoot(transactions).hashValue();
+        MerkleTree merkleTree = new MerkleTree(transactions);
+        String expectedHash = merkleTree.generateMerkleRoot().hashValue();
         assertNotEquals(expectedHash, actualHash, "Block merkle root hash was expected to be incorrect");
     }
 }
