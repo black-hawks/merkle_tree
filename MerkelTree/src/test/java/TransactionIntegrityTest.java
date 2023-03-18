@@ -5,8 +5,8 @@ import dataStructure.merkleTree.MerkleTree;
 import dataStructure.merkleTree.MerkleTreeNode;
 import dataStructure.merkleTree.NodeDirection;
 import miner.Miner;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.Encrypt;
 
@@ -29,6 +29,7 @@ public class TransactionIntegrityTest {
     }
 
     @Test
+    @DisplayName("Transaction is valid")
     public void validTransaction() {
         AbstractMap.SimpleEntry<Integer, Block> entry = blockchain.getTransactionBlock("2e1816ea-a330-4313-a7d8-4635da002d98");
         MerkleTreeNode root = entry.getValue().getMerkleRoot();
@@ -40,6 +41,7 @@ public class TransactionIntegrityTest {
     }
 
     @Test
+    @DisplayName("Transaction is tampered")
     public void tamperedTransaction() {
         AbstractMap.SimpleEntry<Integer, Block> entry = blockchain.getTransactionBlock("2e1816ea-a330-4313-a7d8-4635da002d98");
         MerkleTreeNode root = entry.getValue().getMerkleRoot();
@@ -49,5 +51,18 @@ public class TransactionIntegrityTest {
         Stack<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath = MerkleTree.getMerklePath(root, entry.getKey());
         String expectedHash = MerkleTree.getMerkleProof(Encrypt.encryptThisTransaction(transaction), merklePath);
         assertNotEquals(expectedHash, actualHash, "Block merkle proof hash was expected to be incorrect");
+    }
+
+    @Test
+    @DisplayName("Transaction is valid, but block is compromised")
+    public void compromisedBlock() {
+        AbstractMap.SimpleEntry<Integer, Block> entry = blockchain.getTransactionBlock("2e1816ea-a330-4313-a7d8-4635da002d98");
+        MerkleTreeNode root = entry.getValue().getMerkleRoot();
+        String actualHash = root.getHashValue();
+        entry.getValue().getTransactions().get(0).setAmount(999999);
+        Transaction transaction = entry.getValue().getTransactions().get(entry.getKey());
+        Stack<Map.Entry<MerkleTreeNode, NodeDirection>> merklePath = MerkleTree.getMerklePath(root, entry.getKey());
+        String expectedHash = MerkleTree.getMerkleProof(Encrypt.encryptThisTransaction(transaction), merklePath);
+        assertEquals(expectedHash, actualHash, "Block merkle proof hash was expected to be correct");
     }
 }

@@ -13,9 +13,6 @@ import java.util.Stack;
 public class Test {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
-
         List<Transaction> dataBlocks = new ArrayList<>();
         dataBlocks.add(new Transaction("abc-xyz", "xyz", "abc", 10, 1000));
         dataBlocks.add(new Transaction("xyz2-abc1", "xyz2", "abc1", 100, 1000));
@@ -23,8 +20,8 @@ public class Test {
         dataBlocks.add(new Transaction("xyz4-abc2", "xyz4", "abc2", 130, 1000));
         dataBlocks.add(new Transaction("abc-xyz6", "xyz", "abc", 10, 1000));
         dataBlocks.add(new Transaction("xyz2-abc17", "xyz2", "abc1", 100, 1000));
-//		dataBlocks.add(new Transaction("xyz32-abc28", "xyz32", "abc2", 10, 1000));
-//		dataBlocks.add(new Transaction("xyz4-abc2", "xyz44", "abc2", 130, 1000));
+		dataBlocks.add(new Transaction("xyz32-abc28", "xyz32", "abc2", 10, 1000));
+		dataBlocks.add(new Transaction("xyz4-abc2", "xyz44", "abc2", 130, 1000));
         MerkleTreeNode root = MerkleTree.generateMerkleRoot(dataBlocks);
 //        TreePrinter.printTree(root);
 //		tree.printLevelOrderTraversal(root);
