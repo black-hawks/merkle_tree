@@ -8,44 +8,34 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.List;
 
+
 /**
- * The Miner class is responsible for mining new blocks by creating a block
- * from a list of transactions and adding it to the blockchain.
+ A class representing a Miner, responsible for mining blocks from a list of transactions.
  */
 public class Miner {
-    /**
-     * The blockchain instance.
-     */
-    private final Blockchain blockchain;
-    /**
-     * The transaction reader instance that reads transactions from a CSV file.
-     */
-    private final TransactionReader transactionReader;
+    private final Blockchain blockchain; // The blockchain to which mined blocks will be added.
+    private final TransactionReader transactionReader; // A reader for getting transactions from a CSV file.
 
     /**
-     * Constructs a new Miner instance with a new Blockchain instance.
-     *
-     * @throws FileNotFoundException if the transactions CSV file cannot be found.
+
+     Constructs a new Miner object with a new instance of a Blockchain object and a default TransactionReader object.
+     @throws FileNotFoundException if the CSV file with transactions cannot be found.
      */
     public Miner() throws FileNotFoundException {
         this(new Blockchain());
     }
-
     /**
-     * Constructs a new Miner instance with a given blockchain instance.
-     *
-     * @param blockchain the blockchain instance to use.
-     * @throws FileNotFoundException if the transactions CSV file cannot be found.
+
+     Constructs a new Miner object with the specified Blockchain object and a default TransactionReader object.
+     @param blockchain the Blockchain object to use for storing mined blocks.
+     @throws FileNotFoundException if the CSV file with transactions cannot be found.
      */
     public Miner(Blockchain blockchain) throws FileNotFoundException {
         this.blockchain = blockchain;
         transactionReader = new TransactionReader("transactions.csv", Duration.ofSeconds(1));
     }
-
-
     /**
-     * Mines new blocks by creating a block from a list of transactions and adding it to the blockchain.
-     * Prints the number of transactions and blocks mined, and the time taken to mine them.
+     Mines new blocks by continuously creating and adding them to the blockchain until there are no more transactions left.
      */
     public void mine() {
         long start = System.currentTimeMillis();
@@ -63,11 +53,9 @@ public class Miner {
         System.out.println("Miner took " + (System.currentTimeMillis() - start) + " ms to mine " + transactionCount
                 + " transactions and created " + blockCount + " blocks");
     }
-
     /**
-     * Creates a new block from a list of transactions read from the transactions CSV file.
-     *
-     * @return a new block instance, or null if there are no transactions to create a block from.
+     Creates a new block from a list of transactions obtained from the TransactionReader object.
+     @return the newly created Block object or null if there are no more transactions left.
      */
     public Block createBlock() {
         List<Transaction> transactions = this.getTransactions();
@@ -76,12 +64,9 @@ public class Miner {
         }
         return new Block(transactions.get(0).getTimestamp(), transactions);
     }
-
-
     /**
-     * Returns a list of transactions read from the transactions CSV file.
-     *
-     * @return a list of transaction instances.
+     Gets a list of transactions from the TransactionReader object.
+     @return the list of transactions or null if there are no more transactions left.
      */
     public List<Transaction> getTransactions() {
         return transactionReader.getTransactions();
