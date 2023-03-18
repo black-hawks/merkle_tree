@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="main" target="19" />
       <module name="MerkelTree" target="19" />
     </bytecodeTargetLevel>
   </component>

@@ -22,13 +22,20 @@ public class Miner {
     }
 
     public void mine() {
+        long start = System.currentTimeMillis();
+        int transactionCount = 0;
+        int blockCount = 0;
         while (true) {
             Block block = this.createBlock();
             if (block == null) {
                 break;
             }
             blockchain.addBlock(block);
+            transactionCount = transactionCount + block.getTransactions().size();
+            blockCount++;
         }
+        System.out.println("Miner took " + (System.currentTimeMillis() - start) + " ms to mine " + transactionCount
+                + " transactions and created " + blockCount + " blocks");
     }
 
     public Block createBlock() {
