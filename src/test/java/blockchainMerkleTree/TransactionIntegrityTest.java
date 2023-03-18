@@ -20,6 +20,12 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * The TransactionIntegrityTest class is responsible for testing the integrity of transactions in the blockchain.
+ * It contains methods to test if a transaction is valid, if a transaction has been tampered with, and if a block
+ * containing a valid transaction has been compromised. This class uses JUnit Jupiter to run tests and assert
+ * expected results.
+ */
 public class TransactionIntegrityTest {
     static Blockchain blockchain;
 

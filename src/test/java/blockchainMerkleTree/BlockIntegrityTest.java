@@ -14,6 +14,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * This class contains the JUnit test cases to verify the integrity of a block in the blockchain.
+ * It tests if the block is tampered with by adding, changing or replacing transactions, and checks if the
+ * merkle root hash of the block is still correct.
+ */
 class BlockIntegrityTest {
     static Block block;
 

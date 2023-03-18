@@ -1,8 +1,3 @@
-/**
- * FlightReader class reads flight information from a CSV file and returns flight data in Flight objects.
- * <p>
- * The flight data includes flight departure time, flight number, and flight durations.
- */
 package blockchainMerkleTree.miner;
 
 import blockchainMerkleTree.blockchain.Transaction;
@@ -15,13 +10,19 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TransactionReader class reads transaction information from a CSV file and returns transaction data in Transaction objects.
+ * <p>
+ * The transaction data includes transaction ID, sender address, receiver address, transaction amount, and transaction timestamp.
+ */
 public class TransactionReader extends CSVReader {
     private final Duration period;
 
     /**
-     * Constructor for FlightReader class.
+     * Constructor for TransactionReader class.
      *
      * @param filepath the file path of the CSV file to be read
+     * @param period   the duration of time to read transactions from the CSV file
      * @throws FileNotFoundException if the CSV file is not found
      */
     public TransactionReader(String filepath, Duration period) throws FileNotFoundException {
@@ -31,11 +32,12 @@ public class TransactionReader extends CSVReader {
 
 
     /**
-     * Gets the departure date of the flight from the CSV file.
+     * Gets the timestamp of the first transaction in the current period from the CSV file.
      *
-     * @return the departure date of the flight in milliseconds since the epoch
+     * @return the timestamp of the first transaction in the current period in milliseconds since the epoch,
+     * or -1 if there are no more transactions in the CSV file
      * @throws IOException    if an I/O error occurs
-     * @throws ParseException if the date format is not valid
+     * @throws ParseException if the timestamp format is not valid
      */
     private long getTime() throws IOException, ParseException {
         br.mark(100);
@@ -48,11 +50,11 @@ public class TransactionReader extends CSVReader {
     }
 
     /**
-     * Gets the flight data from the CSV file and creates a Flight object.
+     * Gets the transaction data from the CSV file and creates a Transaction object.
      *
-     * @return a Flight object containing the flight data
+     * @return a Transaction object containing the transaction data, or null if there are no more transactions in the CSV file
      * @throws IOException    if an I/O error occurs
-     * @throws ParseException if the date or duration format is not valid
+     * @throws ParseException if the timestamp, amount or address format is not valid
      */
     private Transaction getTransaction() throws IOException, ParseException {
         String[] line = this.readLine();
@@ -68,6 +70,11 @@ public class TransactionReader extends CSVReader {
         );
     }
 
+    /**
+     * Gets a list of transactions within the current time period.
+     *
+     * @return a list of Transaction objects within the current time period, or null if there are no more transactions in the CSV file
+     */
     public List<Transaction> getTransactions() {
         try {
             long startTime = getTime();
