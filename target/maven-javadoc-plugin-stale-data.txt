@@ -1,0 +1,55 @@
+@options
+@packages
+-classpath
+'C:/Users/purvi/.m2/repository/org/json/json/20210307/json-20210307.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'D:/UCD/ADS/assignment2/MerkelTree/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'D:/UCD/ADS/assignment2/MerkelTree/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'MerkelTree 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'MerkelTree 1.0-SNAPSHOT API'
+blockchainMerkleTree.blockchain
+blockchainMerkleTree.dataGeneration
+blockchainMerkleTree.dataStructure.linkedList
+blockchainMerkleTree.dataStructure.merkleTree
+blockchainMerkleTree
+blockchainMerkleTree.miner
+blockchainMerkleTree.util
+C:\Users\purvi\.m2\repository\org\json\json\20210307\json-20210307.jar = 1678977831264
+D:\UCD\ADS\assignment2\MerkelTree\src\main\java = 1679176734330
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\allclasses-index.html = 1679176869671
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\allpackages-index.html = 1679176869679
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\copy.svg = 1679176869770
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\element-list = 1679176869363
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\help-doc.html = 1679176869759
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\index-all.html = 1679176869738
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\index.html = 1679176869640
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\jquery-ui.overrides.css = 1679176869797
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\member-search-index.js = 1679176869696
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\module-search-index.js = 1679176869689
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\overview-summary.html = 1679176869749
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\overview-tree.html = 1679176869632
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\package-search-index.js = 1679176869692
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\script.js = 1679176869766
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\search-page.js = 1679176869777
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\search.html = 1679176869742
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\search.js = 1679176869774
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\stylesheet.css = 1679176869763
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\tag-search-index.js = 1679176869698
+D:\UCD\ADS\assignment2\MerkelTree\target\site\apidocs\type-search-index.js = 1679176869694

@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3bd478f-4b08-4e42-919b-39d3d9337af3" name="Changes" comment="Refactor MerkleTreeNode">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Blockchain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/blockchain/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/linkedList/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/linkedList/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/linkedList/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/dataStructure/linkedList/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/miner/Miner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/miner/Miner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/miner/TransactionReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/blockchainMerkleTree/miner/TransactionReader.java" afterDir="false" />
-    </list>
+    <list default="true" id="a3bd478f-4b08-4e42-919b-39d3d9337af3" name="Changes" comment="Formatting" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
