@@ -44,7 +44,7 @@ public class MerkleTree {
                 }
             }
 
-            System.out.println("\n"); // Move to next line after printing each level
+            System.out.println();
         }
     }
 
