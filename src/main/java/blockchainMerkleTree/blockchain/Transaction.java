@@ -95,10 +95,20 @@ public class Transaction {
         return timestamp;
     }
 
+    /**
+     * Sets the amount of money being transferred in the transaction.
+     *
+     * @param amount The new amount of money being transferred in the transaction.
+     */
     public void setAmount(double amount) {
         this.amount = amount;
     }
 
+    /**
+     * Returns a string representation of the Transaction object.
+     *
+     * @return A string representation of the Transaction object.
+     */
     public String toString() {
         return "Transaction{" +
                 "transactionId='" + transactionId + '\'' +
